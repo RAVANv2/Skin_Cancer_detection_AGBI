@@ -5,11 +5,11 @@ FROM ubuntu:18.04
 RUN apt-get update && apt-get install -y python3 python3-pip sudo 
 
 
-# Moving my all files to docker
+# Moving my all files in ubuntu
 COPY . /app
 
-# Moving to my app folder
+# install txt pakages
 RUN cd /app && pip3 install -r requirements.txt
 
-# After install all packages we have to land on our app folder
+# landing into app dir
 WORKDIR /app 
