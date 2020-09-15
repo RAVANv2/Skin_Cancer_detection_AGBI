@@ -1,11 +1,16 @@
 # Skin_Cancer_detection_AGBI
 
-## Flask API 
-Flask api for cancer detection model. To download resnet weight [click here](https://drive.google.com/file/d/152UqL62m27_xgEudL9fSnd1_YegT5YEG/view?usp=sharing) and for fastAI [click here](https://drive.google.com/file/d/1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6/view?usp=sharing)
-
-
 `pip install gdown`
+
+
+## Flask API 
+Flask api for cancer detection model. To download resnet weight [click here](https://drive.google.com/file/d/152UqL62m27_xgEudL9fSnd1_YegT5YEG/view?usp=sharing) 
+
 `gdown https://drive.google.com/uc?id=152UqL62m27_xgEudL9fSnd1_YegT5YEG&export=download`
+
+- and for fastAI [click here](https://drive.google.com/file/d/1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6/view?usp=sharing)
+`gdown https://drive.google.com/u/0/uc?id=1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6&export=download`
+
 
 
 Base URL: [http://host:port_number/
