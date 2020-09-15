@@ -23,7 +23,7 @@ Parameter:
 | Parameter | Data Type | Value | Required |
 |-----------|-----------|-------|----------|
 | user_id_to_test | string | any unique user id | True |
-| enrollmentimages|string|base64image| True|
+| image_for_test|string|base64image| True|
 
 Sample Request:  
 
@@ -57,7 +57,7 @@ Parameter:
 | Parameter | Data Type | Value | Required |
 |-----------|-----------|-------|----------|
 | user_id_to_test | string | any unique user id | True |
-| enrollmentimages|string|base64image| True|
+| image_for_test|string|base64image| True|
 
 Sample Request:  
 
