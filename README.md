@@ -44,7 +44,7 @@ Response:
 }
 
 
-#### 1. For (skin_infection_types)
+#### 2. For (skin_infection_types)
 
 Here : http://0.0.0.0:6000/
 
