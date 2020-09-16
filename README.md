@@ -43,10 +43,15 @@ Sample Request:
 
 Response:
 
+{ "errorcode": 0, "value": "[4.9043792e-06 9.9999511e-01]", "result": "success" }
 
-{
-    "value": "[4.9043792e-06 9.9999511e-01]"
-}
+or 
+
+{ "errorcode": -1, "result": "Eror in Resnet Model" }
+
+or 
+
+{ "errorcode": -2, "result": "Unable to Read base 64 image" }
 
 
 #### 2. For (skin_infection_types)
