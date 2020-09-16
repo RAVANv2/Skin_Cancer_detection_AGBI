@@ -17,25 +17,22 @@ logger = logging.getLogger(__name__)
 
 '''Creating malonoma_app instance'''
 malonoma_app = Flask(__name__)
-CORS(malonoma_app)
-malonoma_app.config['DEBUG'] = True
-malonoma_app.config['JSON_SORT_KEYS'] = False
+# CORS(malonoma_app)
+# malonoma_app.config['DEBUG'] = True
+# malonoma_app.config['JSON_SORT_KEYS'] = False
 
 # Creating api instance
-api = Api(malonoma_app)
-
-class prediction(Resource):
-
-    def get(self):
+# api = Api(malonoma_app)
+@malonoma_app.route('/pred_malonoma', methods=['POST','GET'])
+def pred_malonoma():
+    if request.method == 'GET':
         return jsonify({'messege':'Make post method for prediction'})
-
-    def post(self):
+    else:
         logger.info("getting json request")
         try:
-            data = request.get_json()
             logger.info("getting base64 of image")
-            user_id_to_test= data['user_id_to_test']
-            image_for_test = data['image_for_test']
+            user_id_to_test= request.json['user_id_to_test']
+            image_for_test = request.json['image_for_test']
 
             try:
                 data_dir = base64_to_image(user_id_to_test, image_for_test, 'test')
@@ -60,7 +57,7 @@ class prediction(Resource):
         except:
             return jsonify({ "errorcode": -1, "result": "Eror in Resnet Model" })
 
-api.add_resource(prediction,'/')
+# api.add_resource(prediction,'/')
 
 
 
