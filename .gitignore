@@ -1,0 +1,10 @@
+__pycache__/
+*.h5
+*.log
+*.out
+venv/
+test/
+*.pyc
+*.ipynb
+.ipynb_checkpoints
+.DS_Store

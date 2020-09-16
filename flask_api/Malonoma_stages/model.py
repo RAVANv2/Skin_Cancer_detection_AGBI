@@ -6,16 +6,24 @@ from PIL import Image
 from keras.models import load_model
 from keras.applications.resnet50 import ResNet50
 
+import logging
+
+FORMAT = '%(asctime)-15s [%(levelname)s] [%(filename)s:%(lineno)s]: %(message)s'
+logging.basicConfig(format=FORMAT, level=logging.INFO, filename="malonoma_app.out")
+logger = logging.getLogger(__name__)
+
 class Model:
     def __init__(self):
-        self.model = load_model('./weights/resnet.h5')
+        logger.info("loading the model weights")
+        self.model = load_model('weights/resnet.h5')
 
     def resize_image(self,img, size=(28,28)):
+        logger.info("resizing image to 28,28")
 
         h, w = img.shape[:2]
         c = img.shape[2] if len(img.shape)>2 else 1
 
-        if h == w: 
+        if h == w:
             return cv2.resize(img, size, cv2.INTER_AREA)
 
         dif = h if h > w else w
@@ -33,8 +41,5 @@ class Model:
             mask[y_pos:y_pos+h, x_pos:x_pos+w, :] = img[:h, :w, :]
 
         return cv2.resize(mask, size, interpolation)
-        
-resnet = Model()    
 
-    
-
+resnet = Model()
