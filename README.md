@@ -96,3 +96,10 @@ Response<br>
 {"Class_of_infection","index","Probability"}
 
 -------------------------
+
+## Social_Network
+pip install django
+
+RUN = python manage.py runserver
+url = localhost:8000/posts
+
