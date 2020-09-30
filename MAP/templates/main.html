@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Get Your Nearest skin Hospital</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+.marker {
+  background-image: url('https://cdn1.iconfinder.com/data/icons/maps-and-location-v2/64/shadow_pin_floating_google-512.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#b1{
+  bottom:20%;
+  left:5%;
+  display:block;
+  position: absolute;
+  margin: 0px auto;
+  width :100px;
+}
+#b2{
+  bottom:5%;
+  left:5%;
+  display:block;
+  position: absolute;
+  margin: 0px auto;
+  width :100px;
+
+}
+</style>
+
+<body onload="getLocation()">
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.css' type='text/css' />
+    <div id='map'></div>
+
+    <form method="POST">
+        <input type= "hidden" name="geoc1" id="g1" value="abc">
+        <input type= "hidden" name="geoc2" id="g2" value="abc">
+        <input type= "hidden" name="geoc3" id="g3" value="123">
+    </form>
+
+    
+    <script>
+        function weatherBalloon(latitude, longitude ) {
+            var key = 'b41265ae14fae548fdf54205e8b72133';
+            fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + key)
+            .then(function(resp) { return resp.json() }) // Convert data to json
+            .then(function(data) {
+                //console.log(data);
+                //console.log(data['weather'][0]['main']);
+                speakWeather(data['weather'][0]['main']);
+            })
+            .catch(function() {
+            // catch any errors
+            });
+            }
+        
+        var y = document.getElementById("result");
+        var x;
+        window.positionInfo = [0, 0];
+
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(showPosition);
+            } else {
+                y.innerHTML = "Geolocation is not supported by this browser.";
+            }
+            }
+        
+        function showPosition(position) {
+            window.positionInfo = [position.coords.latitude, position.coords.longitude];
+            document.getElementById("g1").value = positionInfo[0];
+            document.getElementById("g2").value = positionInfo[1];
+        }
+
+    // Map 
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGRuYWlrIiwiYSI6ImNqdHF1NHZ4bjA1Z3M0M3BsbjdmMm5iankifQ.iBLKK8ExatGKCwZyxpGhLw';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/omkar21/cju2q4eo50n2f1fqlq6iwla80',
+    center: [77.4975,27.2048], // [Long,Lat]
+    zoom: 15
+    });
+
+    map.on('load', function(position)
+    {
+        var directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken
+            });
+        var geolocate = new mapboxgl.GeolocateControl({positionOptions: {enableHighAccuracy: true},trackUserLocation: true});
+        var pos;
+        map.addControl(geolocate);
+        map.addControl(directions, 'top-left');
+        geolocate.on('geolocate', function(e)
+        {
+            var lon = e.coords.longitude;
+            var lat= e.coords.latitude;
+            var position = [lon, lat];
+            getAlert(co,1);
+            weatherBalloon(lat, lon);
+            if(flag==0){
+            directions.setOrigin(lon+','+lat);
+            flag=1}
+
+        });
+    });
+    console.log("All Function working Fine")
+    </script>
+</body>
+
+</head>
+
