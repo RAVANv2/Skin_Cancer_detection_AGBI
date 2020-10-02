@@ -15,8 +15,8 @@ def homepage():
     '''Get Location with Your IP Address'''
     url = 'http://ipinfo.io/json'
     data = requests.get(url).json()
-    city = data['city']
-    region = data['region'].lower()
+    city = data['city'].lower().strip()
+    region = data['region'].lower().strip()
     Lat = data['loc'].split(',')[0]
     Long = data['loc'].split(',')[1]
 
@@ -28,7 +28,9 @@ def homepage():
     location = []
 
     for response_dict in ans['items']:
-        state = response_dict['address']['state'].lower()
+        state = response_dict['address']['state'].lower().strip()
+        state_city = response_dict['address']['city'].lower().strip()
+        # print(state,state_city)
         
         nearby = dict()
 
