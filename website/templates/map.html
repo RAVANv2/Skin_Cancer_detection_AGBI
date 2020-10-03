@@ -16,357 +16,90 @@
 	    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600' rel='stylesheet' type='text/css'>
 
+
 		<link rel="stylesheet" type="text/css" href="static/css/animate.css">
 		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="static/css/owl.theme.css">
+		<link rel="stylesheet" type="text/css" href="static/css/owl.transitions.css">
 		<link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="static/css/main.css">
-	</head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
+		/>
+		<title>ChartJS - Pie Chart</title>
+		<script src="static/js/jquery-2.1.4.min.js"></script>
+		<script src="static/js/Chart.js"></script>
 
-	<body>
-		<section class= "navs">
-			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  				<div class="container-fluid">
-    				<!-- Brand and toggle get grouped for better mobile display -->
-    				<div class="navbar-header">
-      					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					        <span class="sr-only">Toggle navigation</span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-	      				</button>
-	      				<a class="navbar-brand logo" href="#">
-	      					<span><i class="fa fa-stethoscope"></i></span>
-	      					HealthCare
-	      				</a>
-	    			</div>
+</head>
 
-    		<!-- Collect the nav links, forms, and other content for toggling -->
-				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				    	<ul class="nav navbar-nav navbar-right">
-								<li class="active"><a href="{{url_for('home')}}">Home</a></li>
-								<li><a href="{{url_for('services')}}">Services</a></li>
-								<li><a href="{{url_for('doctors')}}">Doctors</a></li>
-								<li><a href="{{url_for('blog')}}">Blog</a></li>
-						<li><a href="{{url_for('faq')}}">FAQs</a></li>
-						<li><a href="{{url_for('gallery')}}">Gallery</a></li>
-						<li><a href="{{url_for('contact')}}">Contact Us</a></li>
-						<li><a href="{{url_for('login')}}">login</a></li>
-				      	</ul>
-
-				    </div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
-			</nav>
-		</section>
-
-		<section class="gallery-title text-center">
-			<div class="gallery-wrapper">
-				<div class="container">
-					<div class= "row">
-						<div>
-							<h1 class="headline">Our Gallery</h1>
-						</div>
+<body>
+	<section class= "navs">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand logo" href="#">
+								<span><i class="fa fa-stethoscope"></i></span>
+								iVision - Mehta group of hospital
+							</a>
 					</div>
-					<div class="row">
-						<div class="sub-headline">
-							<p>Glimpse of our services </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
-		<section class="gallery-content">
-			<div class="container">
-				<div class="row port">
-	    			<div class="col-md-8 col-md-offset-2 text-center button-group" id="filters">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="active"><a href="{{url_for('home')}}">Home</a></li>
+						 <li><a href="{{url_for('pred')}}">Test for another image</a></li>
+						 <li><a href="http://0.0.0.0:7000/">Find Nearest Hospital</a></li>
+						 <li><a href="{{url_for('chat')}}">Talk to Chat-BOT</a></li>
+						 <li><a href="https://app.slack.com/client/T01BSR0HJ04/D01BTBC4736">Join Forum</a></li>
+						 <li><a href="{{url_for('logout')}}">logout</a></li>
+							</ul>
+					</div><!-- navbar-collapse -->
+			</div><!-- container-fluid -->
+		</nav>
+	</section>
+	<h1> ------------------------------------------------------------------------------------------------------------------------------------------------------</h1>
 
-	    				<button type="button" class="gallery-btn btn-primary btn is-checked" data-filter="*">All</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".care">Care</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".treatment">Treatment</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".staff">Staff</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".donation">Donation</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".pharmacy">Pharmacy</button>
+	<center>
+		<h1>{{cancer_class}}</h1><br>
+		<h1>{{message}}</h1>
+		<canvas id="mycanvas" width="256" height="256">
 
-	    			</div>
-		    	</div>	<!-- row -->
-	    		<div class="row">
-	    			<div class="isotope" id="port-items">
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item care" data-category="care">
-	    					<img class="img-responsive center-block" src="static/img/care1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Elder Patient</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We take the utmost care of our elder patients
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Adhead in Time</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We have the most advanced equipments in the nation.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Nurses</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We have specialised Nurses.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item care" data-category="care">
-	    					<img class="img-responsive center-block" src="static/img/care2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Happy Patients</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										To keep our patients happy is one of our core value.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Diversified specialists</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We have equal number of male and female specialists.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Lorem ipsum dolor sit amet, assumenda numquam tempora.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item care" data-category="care">
-	    					<img class="img-responsive center-block" src="static/img/care3.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Infant Care</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										 We have specialist doctors to take care of infants.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment4.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Lorem atque quas laboriosam eaque neque expedita nisi.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff4.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Lorem ipsum dolor sit ametident, facere, tempore rem
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item donation" data-category="donation">
-	    					<img class="img-responsive center-block" src="static/img/donation2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										 repellat dicta. Debitis dignissimos inventore pariatur.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item pharmacy" data-category="pharmacy">
-	    					<img class="img-responsive center-block" src="static/img/pharmacy1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										 distnctio atque ipsum illo magnam error perspiciatis ab!
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff3.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Debitis aliquam, cupiditate error nihil iure doloribus.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item donation" data-category="donation">
-	    					<img class="img-responsive center-block" src="static/img/donation1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										poris veniam dolores consequatur, quae dignissimos omnis.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item pharmacy" data-category="pharmacy">
-	    					<img class="img-responsive center-block" src="static/img/pharmacy2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										voluptates odit quos, odio fuga in consectetur.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment3.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>No delays</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										With AI in use, you get the no delays in your reports.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    			</div>	<!-- isotope -->
-	    		</div>	<!-- row -->
-			</div>
-		</section>
-
-		<section id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<ul class="text-center contact">
-				        	<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Facebook" class="facebook"><i class="fa fa-facebook"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Twitter" class="twitter"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Google +" class="google-plus"><i class="fa fa-google-plus"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Instagram" class="instagram"><i class="fa fa-instagram"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Pinterest" class="pinterest"><i class="fa fa-pinterest"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Connect with Skype" class="skype"><i class="fa fa-skype"></i></a>
-							</li>
-				      	</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="copy-right-text text-center">
-							&copy; Copyright 2020, Team iVision
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<script type="text/javascript" src="static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="static/js/isotope.pkgd.min.js"></script>
-		<script type="text/javascript" src="static/js/wow.min.js"></script>
-		<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-
+		</center>
 		<script>
-      		new WOW().init();
-		</script>
+			$(document).ready(function(){
+				var ctx = $("#mycanvas").get(0).getContext("2d");
 
-		<script>
-			$( function() {
-				  // init Isotope
-			  	var $container = $('.isotope').isotope
-			  	({
-				    itemSelector: '.element-item',
-				    layoutMode: 'fitRows'
-			  	});
+				//pie chart data
+				//sum of values = 360
+				var data = [
+					{
+						value: {{per}},
+						color: "red",
+						highlight: "red",
+						label: "Chances"
+					},
+					{
+						value: {{not_per}},
+						color: "lightgreen",
+						highlight: "lightgreen",
+						label: "No Chances"
+					},
+				];
 
-
-  				// bind filter button click
-  				$('#filters').on( 'click', 'button', function()
-  				{
-				    var filterValue = $( this ).attr('data-filter');
-				    // use filterFn if matches value
-				    $container.isotope({ filter: filterValue });
-				 });
-
-			  // change is-checked class on buttons
-			  	$('.button-group').each( function( i, buttonGroup )
-			  	{
-			    	var $buttonGroup = $( buttonGroup );
-			    	$buttonGroup.on( 'click', 'button', function()
-			    	{
-			      		$buttonGroup.find('.is-checked').removeClass('is-checked');
-			      		$( this ).addClass('is-checked');
-			    	});
-			  	});
-
+				//draw
+				var piechart = new Chart(ctx).Pie(data);
 			});
 		</script>
-
 	</body>
 </html>

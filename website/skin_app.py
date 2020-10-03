@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import numpy as np
 from datetime import datetime
+from werkzeug.utils import secure_filename
 
 
 from flask_mysqldb import MySQL
@@ -159,14 +160,71 @@ def logout():
     session.pop('loggedin', None)
     session.pop('username', None)
     # Redirect to login page
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 @skin_app.route('/pred', methods=['GET', 'POST'])
 def pred():
- if 'loggedin' in session:
     return render_template('pred.html')
- else:
-     return redirect(url_for('login'))
+
+@skin_app.route('/upload_image', methods=['GET', 'POST'])
+def upload_image():
+  if 'loggedin' in session:
+     img_file = request.files['img_file']
+     # img_filename = secure_filename(img_file.filename)
+     file = session['username']
+     img_file.save(os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png'))
+     loc = os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png')
+     # print(loc)
+     root = os.getcwd()
+     part_1 = "{\'src\':\'"
+     image = root+'/'+loc
+     part_3 = "'}\n'"
+
+     payload = part_1+image+part_3
+
+     strr = payload.replace("\'", "\"")
+
+     url = "http://0.0.0.0:6000/"
+
+     payload = "{\"src\":\"/home/bhrt/Documents/Skin_Cancer_detection_AGBI/website/test_images/bharat.png\"}\n"
+     headers = {
+       'Content-Type': 'application/json'
+     }
+
+     response = requests.request("POST", url, headers=headers, data = payload)
+
+     answer = response.json()
+     cancer_class = answer['class']
+
+     pred_index = answer['pred_idx']
+     pred_index = pred_index[7:-1]
+     pred_index = int(pred_index)
+
+     prob = answer['probability']
+     prob = prob[8:-2]
+     prob = prob.split(",")
+
+     thres = 0.3
+     if float(prob[pred_index]) > float(0.3):
+         pro = float(prob[pred_index])
+         per = 100 - pro
+         not_per = pro
+         cancer_class = "This is your predicted probability for " + cancer_class
+         message = "Please see a doctor ASAP"
+     else:
+         per = 0
+         not_per = 100
+         cancer_class = "No cancer detected for this skin type"
+         message = "Congratulations you're safe"
+
+     # print(cancer_class)
+     print(per,"per")
+     print(not_per,"not_per")
+
+     return render_template('map.html',per=per,not_per=not_per,cancer_class=cancer_class,message=message)
+  else:
+      return redirect(url_for('login'))
+
 
 @skin_app.route('/map', methods=['GET', 'POST'])
 def map():
@@ -202,10 +260,12 @@ def callbot(userText):
 @skin_app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    answer_dict = callbot(userText)
-    # print(answer['answers'][0])
-    # return str(bot.get_response(userText))
-    return str(answer_dict['answers'][0]['answer'])
+    try:
+        answer_dict = callbot(userText)
+        return str(answer_dict['answers'][0]['answer'])
+    except :
+        return "sorry i dont have idea about that"
+
 
 @skin_app.route('/forum', methods=['GET', 'POST'])
 def forum():
