@@ -103,7 +103,7 @@ def check_reg_cred():
             message = "Unable to register you, please make sure your username is unique and you have entered password"
             return render_template('login.html',message=message)
 
-        message ="Sucess, Proceed to use Intelli-Parser"
+        message ="Sucess, Proceed to use Special services"
         return render_template('login.html',message=message)###
 
 @skin_app.route('/login')
@@ -182,6 +182,30 @@ def chat():
      return render_template('chat.html')
   else:
       return redirect(url_for('login'))
+
+def callbot(userText):
+    url = "https://paidqnabot3.azurewebsites.net/qnamaker/knowledgebases/192e9b82-3d48-4fa2-82c4-587e1ba22351/generateAnswer"
+
+    # payload = "\n{\"question\":\"+str(userText)+\"}\n"
+    part_1 = "\n{\'question\':\'"
+    var = userText
+    part_3 = "'}\n'"
+    payload = part_1+var+part_3
+    headers = {
+      'Authorization': 'EndpointKey b5ba0699-4c25-416d-8dc9-7448f6e87eb4',
+      'Content-Type': 'application/json',
+      }
+
+    response = requests.request("POST", url, headers=headers, data = payload)
+    return response.json()
+
+@skin_app.route("/get")
+def get_bot_response():
+    userText = request.args.get('msg')
+    answer_dict = callbot(userText)
+    # print(answer['answers'][0])
+    # return str(bot.get_response(userText))
+    return str(answer_dict['answers'][0]['answer'])
 
 @skin_app.route('/forum', methods=['GET', 'POST'])
 def forum():
