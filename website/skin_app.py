@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import numpy as np
 from datetime import datetime
+from werkzeug.utils import secure_filename
 
 
 from flask_mysqldb import MySQL
@@ -103,7 +104,7 @@ def check_reg_cred():
             message = "Unable to register you, please make sure your username is unique and you have entered password"
             return render_template('login.html',message=message)
 
-        message ="Sucess, Proceed to use Intelli-Parser"
+        message ="Sucess, Proceed to use Special services"
         return render_template('login.html',message=message)###
 
 @skin_app.route('/login')
@@ -159,14 +160,71 @@ def logout():
     session.pop('loggedin', None)
     session.pop('username', None)
     # Redirect to login page
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 @skin_app.route('/pred', methods=['GET', 'POST'])
 def pred():
- if 'loggedin' in session:
     return render_template('pred.html')
- else:
-     return redirect(url_for('login'))
+
+@skin_app.route('/upload_image', methods=['GET', 'POST'])
+def upload_image():
+  if 'loggedin' in session:
+     img_file = request.files['img_file']
+     # img_filename = secure_filename(img_file.filename)
+     file = session['username']
+     img_file.save(os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png'))
+     loc = os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png')
+     # print(loc)
+     root = os.getcwd()
+     part_1 = "{\'src\':\'"
+     image = root+'/'+loc
+     part_3 = "'}\n'"
+
+     payload = part_1+image+part_3
+
+     strr = payload.replace("\'", "\"")
+
+     url = "http://0.0.0.0:6000/"
+
+     payload = "{\"src\":\"/home/bhrt/Documents/Skin_Cancer_detection_AGBI/website/test_images/bharat.png\"}\n"
+     headers = {
+       'Content-Type': 'application/json'
+     }
+
+     response = requests.request("POST", url, headers=headers, data = payload)
+
+     answer = response.json()
+     cancer_class = answer['class']
+
+     pred_index = answer['pred_idx']
+     pred_index = pred_index[7:-1]
+     pred_index = int(pred_index)
+
+     prob = answer['probability']
+     prob = prob[8:-2]
+     prob = prob.split(",")
+
+     thres = 0.3
+     if float(prob[pred_index]) > float(0.3):
+         pro = float(prob[pred_index])
+         per = 100 - pro
+         not_per = pro
+         cancer_class = "This is your predicted probability for " + cancer_class
+         message = "Please see a doctor ASAP"
+     else:
+         per = 0
+         not_per = 100
+         cancer_class = "No cancer detected for this skin type"
+         message = "Congratulations you're safe"
+
+     # print(cancer_class)
+     print(per,"per")
+     print(not_per,"not_per")
+
+     return render_template('map.html',per=per,not_per=not_per,cancer_class=cancer_class,message=message)
+  else:
+      return redirect(url_for('login'))
+
 
 @skin_app.route('/map', methods=['GET', 'POST'])
 def map():
@@ -182,6 +240,32 @@ def chat():
      return render_template('chat.html')
   else:
       return redirect(url_for('login'))
+
+def callbot(userText):
+    url = "https://paidqnabot3.azurewebsites.net/qnamaker/knowledgebases/192e9b82-3d48-4fa2-82c4-587e1ba22351/generateAnswer"
+
+    # payload = "\n{\"question\":\"+str(userText)+\"}\n"
+    part_1 = "\n{\'question\':\'"
+    var = userText
+    part_3 = "'}\n'"
+    payload = part_1+var+part_3
+    headers = {
+      'Authorization': 'EndpointKey b5ba0699-4c25-416d-8dc9-7448f6e87eb4',
+      'Content-Type': 'application/json',
+      }
+
+    response = requests.request("POST", url, headers=headers, data = payload)
+    return response.json()
+
+@skin_app.route("/get")
+def get_bot_response():
+    userText = request.args.get('msg')
+    try:
+        answer_dict = callbot(userText)
+        return str(answer_dict['answers'][0]['answer'])
+    except :
+        return "sorry i dont have idea about that"
+
 
 @skin_app.route('/forum', methods=['GET', 'POST'])
 def forum():

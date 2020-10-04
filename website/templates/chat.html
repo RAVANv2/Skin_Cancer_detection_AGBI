@@ -16,10 +16,98 @@
 	    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600' rel='stylesheet' type='text/css'>
 
+
 		<link rel="stylesheet" type="text/css" href="static/css/animate.css">
 		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="static/css/owl.theme.css">
+		<link rel="stylesheet" type="text/css" href="static/css/owl.transitions.css">
 		<link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="static/css/main.css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<style>
+			body {
+				font-family: monospace;
+			}
+			h1 {
+				background-color: yellow;
+				display: inline-block;
+				font-size: 3em;
+				margin: 0;
+				padding: 14px;
+			}
+			h3 {
+				color: black;
+				font-size: 20px;
+				margin-top: 3px;
+				text-align: center;
+			}
+			#chatbox {
+				margin-left: auto;
+				margin-right: auto;
+				width: 40%;
+				margin-top: 60px;
+			}
+			#userInput {
+				margin-left: auto;
+				margin-right: auto;
+				width: 40%;
+				margin-top: 60px;
+			}
+			#textInput {
+				width: 90%;
+				border: none;
+				border-bottom: 3px solid black;
+				font-family: monospace;
+				font-size: 17px;
+			}
+			.userText {
+				color: white;
+				font-family: monospace;
+				font-size: 17px;
+				text-align: right;
+				line-height: 30px;
+			}
+			.userText span {
+				background-color: #808080;
+				padding: 10px;
+				border-radius: 2px;
+			}
+			.botText {
+				color: white;
+				font-family: monospace;
+				font-size: 17px;
+				text-align: left;
+				line-height: 30px;
+			}
+			.botText span {
+				background-color: #4169e1;
+				padding: 10px;
+				border-radius: 2px;
+			}
+			#tidbit {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 300px;
+			}
+			.boxed {
+				margin-left: auto;
+				margin-right: auto;
+				width: 78%;
+				margin-top: 60px;
+				border: 1px solid green;
+			}
+			.box {
+				border: 2px solid black;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -36,337 +124,91 @@
 	      				</button>
 	      				<a class="navbar-brand logo" href="#">
 	      					<span><i class="fa fa-stethoscope"></i></span>
-	      					HealthCare
+	      					iVision - Mehta group of hospital
 	      				</a>
 	    			</div>
 
-    		<!-- Collect the nav links, forms, and other content for toggling -->
+		    		<!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    	<ul class="nav navbar-nav navbar-right">
 								<li class="active"><a href="{{url_for('home')}}">Home</a></li>
-								<li><a href="{{url_for('services')}}">Services</a></li>
-								<li><a href="{{url_for('doctors')}}">Doctors</a></li>
-								<li><a href="{{url_for('blog')}}">Blog</a></li>
-						<li><a href="{{url_for('faq')}}">FAQs</a></li>
-						<li><a href="{{url_for('gallery')}}">Gallery</a></li>
-						<li><a href="{{url_for('contact')}}">Contact Us</a></li>
-						<li><a href="{{url_for('login')}}">login</a></li>
-				      	</ul>
+							 <li><a href="{{url_for('pred')}}">Diagonse yourself online</a></li>
+							 <li><a href="http://0.0.0.0:7000/">Find Nearest Hospital</a></li>
+							 <li><a href="{{url_for('chat')}}">Talk to Chat-BOT</a></li>
+							 <li><a href="https://app.slack.com/client/T01BSR0HJ04/D01BTBC4736">Join Forum</a></li>
+							 <li><a href="{{url_for('logout')}}">logout</a></li>
 
-				    </div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
+				      	</ul>
+				    </div><!-- navbar-collapse -->
+				</div><!-- container-fluid -->
 			</nav>
 		</section>
 
-		<section class="gallery-title text-center">
-			<div class="gallery-wrapper">
-				<div class="container">
-					<div class= "row">
-						<div>
-							<h1 class="headline">Our Gallery</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="sub-headline">
-							<p>Glimpse of our services </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="gallery-content">
-			<div class="container">
-				<div class="row port">
-	    			<div class="col-md-8 col-md-offset-2 text-center button-group" id="filters">
-
-	    				<button type="button" class="gallery-btn btn-primary btn is-checked" data-filter="*">All</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".care">Care</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".treatment">Treatment</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".staff">Staff</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".donation">Donation</button>
-	    				<button type="button" class="gallery-btn btn-primary btn" data-filter=".pharmacy">Pharmacy</button>
-
-	    			</div>
-		    	</div>	<!-- row -->
-	    		<div class="row">
-	    			<div class="isotope" id="port-items">
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item care" data-category="care">
-	    					<img class="img-responsive center-block" src="static/img/care1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Elder Patient</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We take the utmost care of our elder patients
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Adhead in Time</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We have the most advanced equipments in the nation.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Nurses</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We have specialised Nurses.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item care" data-category="care">
-	    					<img class="img-responsive center-block" src="static/img/care2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Happy Patients</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										To keep our patients happy is one of our core value.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Diversified specialists</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										We have equal number of male and female specialists.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Lorem ipsum dolor sit amet, assumenda numquam tempora.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item care" data-category="care">
-	    					<img class="img-responsive center-block" src="static/img/care3.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Infant Care</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										 We have specialist doctors to take care of infants.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment4.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Lorem atque quas laboriosam eaque neque expedita nisi.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff4.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Lorem ipsum dolor sit ametident, facere, tempore rem
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item donation" data-category="donation">
-	    					<img class="img-responsive center-block" src="static/img/donation2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										 repellat dicta. Debitis dignissimos inventore pariatur.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item pharmacy" data-category="pharmacy">
-	    					<img class="img-responsive center-block" src="static/img/pharmacy1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										 distnctio atque ipsum illo magnam error perspiciatis ab!
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item staff" data-category="staff">
-	    					<img class="img-responsive center-block" src="static/img/staff3.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										Debitis aliquam, cupiditate error nihil iure doloribus.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item donation" data-category="donation">
-	    					<img class="img-responsive center-block" src="static/img/donation1.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										poris veniam dolores consequatur, quae dignissimos omnis.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item pharmacy" data-category="pharmacy">
-	    					<img class="img-responsive center-block" src="static/img/pharmacy2.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>Lorem Ipsum</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										voluptates odit quos, odio fuga in consectetur.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    				<div class="col-md-4 col-sm-6 col-xs-6 element-item treatment" data-category="treatment">
-	    					<img class="img-responsive center-block" src="static/img/treatment3.jpg" alt="Image">
-	    					<div class="item-desc hidden-xs">
-								<div class="item-title">
-									<h3>No delays</h3>
-								</div>
-								<div class="item-tags">
-									<p>
-										With AI in use, you get the no delays in your reports.
-									</p>
-								</div>
-							</div><!-- /.item-desc -->
-	    				</div>
-	    			</div>	<!-- isotope -->
-	    		</div>	<!-- row -->
-			</div>
-		</section>
-
-		<section id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<ul class="text-center contact">
-				        	<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Facebook" class="facebook"><i class="fa fa-facebook"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Twitter" class="twitter"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Google +" class="google-plus"><i class="fa fa-google-plus"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Instagram" class="instagram"><i class="fa fa-instagram"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Share in Pinterest" class="pinterest"><i class="fa fa-pinterest"></i></a>
-							</li>
-							<li class= "socials-icons">
-								<a href="#" data-toggle="tooltip" title="Connect with Skype" class="skype"><i class="fa fa-skype"></i></a>
-							</li>
-				      	</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="copy-right-text text-center">
-							&copy; Copyright 2020, Team iVision
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<script type="text/javascript" src="static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="static/js/isotope.pkgd.min.js"></script>
-		<script type="text/javascript" src="static/js/wow.min.js"></script>
-		<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-
-		<script>
-      		new WOW().init();
-		</script>
-
-		<script>
-			$( function() {
-				  // init Isotope
-			  	var $container = $('.isotope').isotope
-			  	({
-				    itemSelector: '.element-item',
-				    layoutMode: 'fitRows'
-			  	});
 
 
-  				// bind filter button click
-  				$('#filters').on( 'click', 'button', function()
-  				{
-				    var filterValue = $( this ).attr('data-filter');
-				    // use filterFn if matches value
-				    $container.isotope({ filter: filterValue });
-				 });
+<h1> ------------------------------------------------------------------------------------------------------------------------------------------------------</h1>
 
-			  // change is-checked class on buttons
-			  	$('.button-group').each( function( i, buttonGroup )
-			  	{
-			    	var $buttonGroup = $( buttonGroup );
-			    	$buttonGroup.on( 'click', 'button', function()
-			    	{
-			      		$buttonGroup.find('.is-checked').removeClass('is-checked');
-			      		$( this ).addClass('is-checked');
-			    	});
-			  	});
-
+<img />
+<center>
+	<h1>
+		<img
+			src="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
+			alt="CANDICE"
+			style="width:40px;height:40px;"
+		/>Your Personal Health ChatBot
+	</h1>
+</center>
+<!-- <h3>
+	<p>
+		Like this? ❤️ Tweet me 👉
+		<a href="https://twitter.com/_sahilrajput">@_sahilrajput</a>. Find this
+		project on
+		<a href="https://www.github.com/sahil-rajput/Candice">GitHub</a>.
+	</p>
+</h3> -->
+<div class="box"></div>
+<div class="boxed">
+	<div>
+		<div id="chatbox">
+			<img
+				src="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
+				alt="CANDICE"
+				style="width:40px;height:40px;"
+			/>
+			<p class="botText">
+				<span>Hi! I'm iVision your personal ChatBot ❤️</span>
+			</p>
+		</div>
+		<div id="userInput">
+			<input id="textInput" type="text" name="msg" placeholder="Message" />
+		</div>
+	</div>
+	<script>
+		function getBotResponse() {
+			var rawText = $("#textInput").val();
+			var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+			$("#textInput").val("");
+			$("#chatbox").append(userHtml);
+			document
+				.getElementById("userInput")
+				.scrollIntoView({ block: "start", behavior: "smooth" });
+			$.get("/get", { msg: rawText }).done(function(data) {
+				var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+				$("#chatbox").append(botHtml);
+				document
+					.getElementById("userInput")
+					.scrollIntoView({ block: "start", behavior: "smooth" });
 			});
-		</script>
+		}
+		$("#textInput").keypress(function(e) {
+			if (e.which == 13) {
+				getBotResponse();
+			}
+		});
+	</script>
+</div>
+
+
 
 	</body>
 </html>
