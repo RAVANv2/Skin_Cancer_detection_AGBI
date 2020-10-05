@@ -9,6 +9,7 @@
 `cd Skin_Cancer_detection_AGBI`
               
 #### Step 2 : Creating virtual environment
+`pip install virtualenv`
 
 `virtualenv venv -p python3`
 
