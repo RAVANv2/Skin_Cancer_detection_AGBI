@@ -48,7 +48,7 @@ Type in code `python3 app.py`
 
 #### STep 5.3: For Near-by hospital Service
 
-Change directory to root `cd ..` 
+Change directory to root `cd ../..` 
 
 
 Change directory to `cd MAP/nearby`
