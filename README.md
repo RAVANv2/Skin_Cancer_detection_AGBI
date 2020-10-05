@@ -58,7 +58,7 @@ Type in code `python3 main.py`
 
 #### STep 5.3: For Directions to hospital Service
 
-Change directory to root `cd ..` 
+Change directory to root `cd ../..` 
 
 
 Change directory to `cd MAP/map_route`
