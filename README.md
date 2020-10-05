@@ -40,7 +40,7 @@ Type in code `python3 skin_app.py`
 Change directory to root `cd ..` 
 
 
-Change directory to `cd skin_infection_types`
+Change directory to `cd flask_api/skin_infection_types`
 
 
 Type in code `python3 app.py`
@@ -48,7 +48,7 @@ Type in code `python3 app.py`
 
 #### STep 5.3: For Near-by hospital Service
 
-Change directory to root `cd ..` 
+Change directory to root `cd ../..` 
 
 
 Change directory to `cd MAP/nearby`
@@ -58,7 +58,7 @@ Type in code `python3 main.py`
 
 #### STep 5.3: For Directions to hospital Service
 
-Change directory to root `cd ..` 
+Change directory to root `cd ../..` 
 
 
 Change directory to `cd MAP/map_route`
