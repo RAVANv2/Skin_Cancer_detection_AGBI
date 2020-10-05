@@ -10,11 +10,11 @@ app.config['DEBUG'] = True
 app.config['JSON_SORT_KEYS'] = False
 
 
-@app.route('/', methods=['Get','POST'])
+@app.route('/', methods=['GET','POST'])
 def homepage():
     '''Get Location with Your IP Address'''
     url = 'http://ipinfo.io/json'
-    data = requests.get(url).json()
+    data = requests.get(url).json()     
     city = data['city'].lower().strip()
     region = data['region'].lower().strip()
     Lat = data['loc'].split(',')[0]
