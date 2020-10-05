@@ -61,7 +61,7 @@ Type in code `python3 app.py`
 open new terminal using `ctrl+shift+T`
 
 
-Change directory to root `cd ../..` 
+Change directory to root `cd ../`
 
 
 Change directory to `cd MAP/nearby`
@@ -74,7 +74,7 @@ Type in code `python3 main.py`
 open new terminal using `ctrl+shift+T`
 
 
-Change directory to root `cd ../..` 
+Change directory to root `cd ../`
 
 
 Change directory to `cd MAP/map_route`
