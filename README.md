@@ -16,7 +16,6 @@
 
 #### Step 5: Running Individual Services
 
-Base URL: [http://host:port_number/
 
 #### STep 5.1: For Website Service
 
