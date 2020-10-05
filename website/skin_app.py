@@ -177,29 +177,34 @@ def pred():
 @skin_app.route('/upload_image', methods=['GET', 'POST'])
 def upload_image():
      img_file = request.files['img_file']
-     img_filename = secure_filename(img_file.filename)
+     # img_filename = secure_filename(img_file.filename)
 
      file = "test_image"
      img_file.save(os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png'))
      loc = os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png')
      # print(loc)
      root = os.getcwd()
-     part_1 = "{\'src\':\'"
+     # part_1 = "{\'src\':\'"
      image = root+'/'+loc
-     part_3 = "'}\n'"
+     # part_3 = "'}\n'"
 
-     payload = part_1+image+part_3
+     # payload = part_1+image+part_3
 
-     strr = payload.replace("\'", "\"")
+     # strr = payload.replace("\'", "\"")
 
      url = "http://0.0.0.0:6000/"   
 
-     payload = "{\"src\":\"/home/ravan/Skin_Cancer_detection_AGBI/website/test_images/bharat.png\"}\n"
-     headers = {
-       'Content-Type': 'application/json'
-     }
+     # payload = "{\"src\":\"/home/ravan/Skin_Cancer_detection_AGBI/website/test_images/bharat.png\"}\n"
+     # headers = {
+     #   'Content-Type': 'application/json'
+     # }
 
-     response = requests.request("POST", url, headers=headers, data = payload)
+     my_file = {'src':image}
+
+     response = requests.post(url, json=my_file)
+
+
+     # response = requests.request("POST", url, headers=headers, data = payload)
 
      answer = response.json()
      cancer_class = answer['class']
