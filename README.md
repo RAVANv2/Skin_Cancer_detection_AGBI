@@ -1,18 +1,5 @@
 # Skin_Cancer_detection_AGBI
 
-
-
-## Flask API 
-Flask api for cancer detection model. To download 
-
-- [click here](https://drive.google.com/file/d/1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6/view?usp=sharing)
-
-or by command 
-`pip install gdown`
-`gdown https://drive.google.com/u/0/uc?id=1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6&export=download`
-
-
-
 #### Step 1 : Clone the directory
               `git clone https://github.com/RAVANv2/Skin_Cancer_detection_AGBI.git`
               `cd Skin_Cancer_detection_AGBI`
