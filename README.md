@@ -97,9 +97,3 @@ Response<br>
 
 -------------------------
 
-## Social_Network
-pip install django
-
-RUN = python manage.py runserver<br>
-url = localhost:8000/posts
-
