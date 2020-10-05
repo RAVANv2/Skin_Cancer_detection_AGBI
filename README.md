@@ -2,136 +2,66 @@
 
 
 
-`pip install gdown`
-
-
 ## Flask API 
 Flask api for cancer detection model. To download 
-- resnet weight [click here](https://drive.google.com/file/d/152UqL62m27_xgEudL9fSnd1_YegT5YEG/view?usp=sharing) 
-`gdown https://drive.google.com/uc?id=152UqL62m27_xgEudL9fSnd1_YegT5YEG&export=download`
 
-- and for fastAI [click here](https://drive.google.com/file/d/1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6/view?usp=sharing)
+- [click here](https://drive.google.com/file/d/1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6/view?usp=sharing)
+
+or by command 
+`pip install gdown`
 `gdown https://drive.google.com/u/0/uc?id=1f0qGfKANlS6x_ICG_aMjVe3It5B9XVF6&export=download`
 
 
 
+#### Step 1 : Clone the directory
+              `git clone https://github.com/RAVANv2/Skin_Cancer_detection_AGBI.git`
+              `cd Skin_Cancer_detection_AGBI`
+              
+#### Step 2 : Creating virtual environment
+
+`virtualenv venv -p python3`
+
+#### Step 3: Activating Virtual environment
+`source venv/bin/activate`
+
+#### Step 4: Installing Requirements
+`pip install -r requirements`
+
+#### Step 5: Running Individual Services
+
 Base URL: [http://host:port_number/
 
-#### 1. For (Malonoma_stages)
-
-Here : http://0.0.0.0:5005/
-
-Request Method: `POST`
-
-Endpoing: `/`
-
-Parameter:
-
-| Parameter | Data Type | Value | Required |
-|-----------|-----------|-------|----------|
-| user_id_to_test | string | any unique user id | True |
-| image_for_test|string|base64image| True|
-
-Sample Request:  
-
-`Content-Type: application/json`
+#### STep 5.1: For Website Service
 
 
-{
-    "user_id_to_test": "<unique user id>",
-    "image_for_test":"< base64image >"
-}
+Change directory to `cd website`
+Type in code `python3 skin_app.py`
 
 
-Response:
+#### STep 5.2: For Skin Cancer Prediction Model Service
 
-{ "errorcode": 0, "value": "[4.9043792e-06 9.9999511e-01]", "result": "success" }
-
-or 
-
-{ "errorcode": -1, "result": "Eror in Resnet Model" }
-
-or 
-
-{ "errorcode": -2, "result": "Unable to Read base 64 image" }
+Change directory to root `cd ..` 
+Change directory to `cd skin_infection_types`
+Type in code `python3 app.py`
 
 
-#### 2. For (skin_infection_types)
+#### STep 5.3: For Near-by hospital Service
 
-Here : http://0.0.0.0:6000/
+Change directory to root `cd ..` 
+Change directory to `cd MAP/nearby`
+Type in code `python3 main.py`
 
-Request Method: `POST`
+#### STep 5.3: For Directions to hospital Service
 
-Endpoing: `/`
-
-Parameter:
-
-| Parameter | Data Type | Value | Required |
-|-----------|-----------|-------|----------|
-| user_id_to_test | string | any unique user id | True |
-| image_for_test|string|base64image| True|
-
-Sample Request:  
-
-`Content-Type: application/json`
-
-
-{
-    "user_id_to_test": "<unique user id>",
-    "image_for_test":"< base64image >"
-}
-
-
-Response:
-
-
-{
-    "value": "[4.9043792e-06 9.9999511e-01]"
-}
-
-
-------------------------
-
-Sample Request<br>
-{"src":"path to image"}<br>
-Response<br>
-{"Class_of_infection","index","Probability"}
-
--------------------------
+Change directory to root `cd ..` 
+Change directory to `cd MAP/map_route`
+Type in code `python3 app.py`
 
 
 
-# Website
 
-- ### Flask Deep Learning Api
+#### 6. Hitting the Website service on localhost
 
-- ### Flask Map Api:
+Here : http://0.0.0.0:7007/
 
-  ​	``` $ python3 MAP/map_route/app.py```
-
-   ```
-    # Output
-    #  Serving Flask app "app" (lazy loading)
-    # * Debug mode: on
-    # * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-    # * Restarting with stat
-    # * Debugger is active!
-    # * Debugger PIN: 251-862-778
-    
-    ```
-
-  
-
-  ```$ python3 MAP/nearby/main.py``` 
-  ```
-    # Output
-    # * Serving Flask app "main" (lazy loading)
-    # * Debug mode: on
-    # * Running on http://0.0.0.0:7000/ (Press CTRL+C to quit)
-    # * Restarting with stat
-    # * Debugger is active!
-    # * Debugger PIN: 251-862-778
-    
-    ```
-
-   
+`And you will see our website made with love`
