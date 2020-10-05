@@ -1,5 +1,7 @@
 # Skin_Cancer_detection_AGBI
 
+
+
 `pip install gdown`
 
 
@@ -97,3 +99,40 @@ Response<br>
 
 -------------------------
 
+
+
+# Website
+
+- ### Flask Deep Learning Api
+
+- ### Flask Map Api:
+
+  ​	``` $ python3 MAP/map_route/app.py```
+
+  - [ ] ``` python
+    # Output
+    #  Serving Flask app "app" (lazy loading)
+    # * Debug mode: on
+    # * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+    # * Restarting with stat
+    # * Debugger is active!
+    # * Debugger PIN: 251-862-778
+    
+    ```
+
+  
+
+  ```$ python3 MAP/nearby/main.py``` 
+
+  - [ ] ``` python
+    # Output
+    # * Serving Flask app "main" (lazy loading)
+    # * Debug mode: on
+    # * Running on http://0.0.0.0:7000/ (Press CTRL+C to quit)
+    # * Restarting with stat
+    # * Debugger is active!
+    # * Debugger PIN: 251-862-778
+    
+    ```
+
+   
