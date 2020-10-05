@@ -1,5 +1,12 @@
 # iVision: Skin Cancer Detection
 
+#### Whole demo and working to run the website can be found here 
+
+https://www.loom.com/share/ebc43e6724804237895b497915320344  
+
+or you can follow the below steps
+
+
 #### Step 1 : Clone the directory
  
 
@@ -21,7 +28,7 @@
 #### Step 4: Installing Requirements
 
 
-`pip install -r requirements`
+`pip install -r requirements.txt`
 
 #### Step 5: Running Individual Services
 
@@ -37,6 +44,9 @@ Type in code `python3 skin_app.py`
 
 #### STep 5.2: For Skin Cancer Prediction Model Service
 
+open new terminal using `ctrl+shift+T`
+
+
 Change directory to root `cd ..` 
 
 
@@ -48,6 +58,9 @@ Type in code `python3 app.py`
 
 #### STep 5.3: For Near-by hospital Service
 
+open new terminal using `ctrl+shift+T`
+
+
 Change directory to root `cd ../..` 
 
 
@@ -57,6 +70,9 @@ Change directory to `cd MAP/nearby`
 Type in code `python3 main.py`
 
 #### STep 5.3: For Directions to hospital Service
+
+open new terminal using `ctrl+shift+T`
+
 
 Change directory to root `cd ../..` 
 
