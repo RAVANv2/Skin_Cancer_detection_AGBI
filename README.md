@@ -92,6 +92,12 @@ Here : http://0.0.0.0:7007/
 
 `And you will see our website made with love`
 
+### Whole demo and working to run the Android APP can be found here 
+
+https://www.loom.com/share/da1ad40ba03e40b0b59533e5e28e2257  
+
+or you can follow the below steps
+
 # Our Android Application
 ### Step 1. Install Android Studio on Ubuntu 18.04
 
