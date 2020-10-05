@@ -109,7 +109,7 @@ Response<br>
 
   ​	``` $ python3 MAP/map_route/app.py```
 
-  - [ ] ``` python
+   ```
     # Output
     #  Serving Flask app "app" (lazy loading)
     # * Debug mode: on
@@ -123,8 +123,7 @@ Response<br>
   
 
   ```$ python3 MAP/nearby/main.py``` 
-
-  - [ ] ``` python
+  ```
     # Output
     # * Serving Flask app "main" (lazy loading)
     # * Debug mode: on
