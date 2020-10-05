@@ -1,4 +1,4 @@
-# Skin_Cancer_detection_AGBI
+# iVision: Skin Cancer Detection
 
 #### Step 1 : Clone the directory
  
