@@ -113,9 +113,9 @@ android-studio 3.3.1.0 from Snapcrafters installed
 ![](https://github.com/RAVANv2/Skin_Cancer_detection_AGBI/blob/master/Android_app/screenshots/studio.PNG)
 
 
-### Step 3. Slect the unzipped folder build the sdk
+### Step 3. Slect the unzipped folder and build the sdk
 
-### Step 4. Now plugin in your device and enable debugging option developer settings
+### Step 4. Now plugin in your device and enable debugging developer settings
 
 ### Step 5. Click on the build and install apk on your mobile device.
 
