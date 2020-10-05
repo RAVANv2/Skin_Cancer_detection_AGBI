@@ -40,7 +40,7 @@ Type in code `python3 skin_app.py`
 Change directory to root `cd ..` 
 
 
-Change directory to `cd skin_infection_types`
+Change directory to `cd flask_api/skin_infection_types`
 
 
 Type in code `python3 app.py`
