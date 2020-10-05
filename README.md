@@ -115,7 +115,7 @@ android-studio 3.3.1.0 from Snapcrafters installed
 
 ### Step 3. Slect the unzipped folder and build the sdk
 
-### Step 4. Now plugin in your device and enable debugging developer settings
+### Step 4. Now plugin in your device and enable debugging from developer settings
 
 ### Step 5. Click on the build and install apk on your mobile device.
 
