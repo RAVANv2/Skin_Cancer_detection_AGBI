@@ -9,7 +9,7 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 
 
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -28,7 +28,7 @@ skin_app.config['MYSQL_USER'] = 'root'
 skin_app.config['MYSQL_PASSWORD'] = 'password'
 skin_app.config['MYSQL_DB'] = 'skin_db'
 
-mysql = MySQL(skin_app)
+# mysql = MySQL(skin_app)
 
 from config import get_config
 conf = get_config()
