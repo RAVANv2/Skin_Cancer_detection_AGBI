@@ -23,19 +23,19 @@ logger = logging.getLogger(__name__)
 skin_app = Flask(__name__, static_url_path='/static')
 skin_app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 skin_app.config['MYSQL_HOST'] = 'localhost'
 skin_app.config['MYSQL_USER'] = 'root'
 skin_app.config['MYSQL_PASSWORD'] = 'password'
 skin_app.config['MYSQL_DB'] = 'skin_db'
 
-=======
+# =======
 # skin_app.config['MYSQL_HOST'] = 'localhost'
 # skin_app.config['MYSQL_USER'] = 'root'
 # skin_app.config['MYSQL_PASSWORD'] = 'password'
 # skin_app.config['MYSQL_DB'] = 'skin_db'
 #
->>>>>>> 86b94a2429a16d0bcf349140be1449596c42cd89
+# >>>>>>> 86b94a2429a16d0bcf349140be1449596c42cd89
 # mysql = MySQL(skin_app)
 
 from config import get_config
@@ -177,7 +177,8 @@ def pred():
 @skin_app.route('/upload_image', methods=['GET', 'POST'])
 def upload_image():
      img_file = request.files['img_file']
-     # img_filename = secure_filename(img_file.filename)
+     img_filename = secure_filename(img_file.filename)
+
      file = "test_image"
      img_file.save(os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png'))
      loc = os.path.join(skin_app.config['UPLOAD_FOLDER'], str(file)+'.png')
@@ -191,9 +192,9 @@ def upload_image():
 
      strr = payload.replace("\'", "\"")
 
-     url = "http://0.0.0.0:6000/"
+     url = "http://0.0.0.0:6000/"   
 
-     payload = "{\"src\":\"/home/bhrt/Documents/Skin_Cancer_detection_AGBI/website/test_images/bharat.png\"}\n"
+     payload = "{\"src\":\"/home/ravan/Skin_Cancer_detection_AGBI/website/test_images/bharat.png\"}\n"
      headers = {
        'Content-Type': 'application/json'
      }
