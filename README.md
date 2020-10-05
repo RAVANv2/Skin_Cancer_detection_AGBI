@@ -69,7 +69,7 @@ Change directory to `cd MAP/nearby`
 
 Type in code `python3 main.py`
 
-#### STep 5.3: For Directions to hospital Service
+#### STep 5.4: For Directions to hospital Service
 
 open new terminal using `ctrl+shift+T`
 
@@ -91,3 +91,33 @@ Here : http://0.0.0.0:7007/
 
 
 `And you will see our website made with love`
+
+# Our Android Application
+### Step 1. Install Android Studio on Ubuntu 18.04
+
+#### Java Installation
+`sudo apt update`
+
+`sudo apt install openjdk-8-jdk`
+
+`java -version`
+
+#### Installing Android Studio
+`sudo snap install android-studio --classic`
+
+Output
+
+android-studio 3.3.1.0 from Snapcrafters installed
+
+### Step 2. Open Android Studio and click on the open new project.
+![](https://github.com/RAVANv2/Skin_Cancer_detection_AGBI/blob/master/Android_app/screenshots/studio.PNG)
+
+
+### Step 3. Slect the unzipped folder build the sdk
+
+### Step 4. Now plugin in your device and enable debugging option developer settings
+
+### Step 5. Click on the build and install apk on your mobile device.
+
+![](https://github.com/RAVANv2/Skin_Cancer_detection_AGBI/blob/master/Android_app/screenshots/congo.PNG)
+
